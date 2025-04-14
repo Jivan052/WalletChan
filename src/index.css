@@ -1,0 +1,114 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 270 100% 98%;
+    --foreground: 280 10% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 280 10% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 280 10% 20%;
+
+    --primary: 267 75% 74%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 60% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 270 30% 96%;
+    --muted-foreground: 280 5% 50%;
+
+    --accent: 280 90% 80%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 350 80% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 270 30% 90%;
+    --input: 270 30% 90%;
+    --ring: 267 75% 74%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  @font-face {
+    font-family: 'KawaiiPixel';
+    src: url('/fonts/kawaii-pixel.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@layer components {
+  .pixel-corners {
+    clip-path: polygon(
+      0% 4px, 4px 4px, 4px 0%, calc(100% - 4px) 0%, calc(100% - 4px) 4px, 
+      100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0% calc(100% - 4px)
+    );
+  }
+
+  .kawaii-card {
+    @apply bg-white/80 backdrop-blur-sm border border-kawaii-purple/30 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl;
+  }
+  
+  .pixelated {
+    image-rendering: pixelated;
+  }
+
+  .token-bar {
+    @apply h-6 rounded-full overflow-hidden relative bg-muted;
+  }
+  
+  .token-bar-fill {
+    @apply h-full transition-all duration-500 ease-out;
+  }
+
+  .speech-bubble {
+    @apply relative bg-white p-4 rounded-2xl border border-kawaii-purple/30 shadow-md;
+  }
+  
+  .speech-bubble:after {
+    content: '';
+    @apply absolute border-[12px] border-transparent border-t-white bottom-[-24px] left-6;
+  }
+
+  .pixel-btn {
+    @apply relative px-4 py-2 bg-neon-purple text-white font-bold transition-transform hover:translate-y-[-2px] active:translate-y-[1px];
+  }
+
+  .pixel-btn:before {
+    content: '';
+    @apply absolute inset-0 bg-black/10 transform translate-y-[3px] rounded-md -z-10;
+  }
+}
+
+@layer utilities {
+  .text-kawaii {
+    @apply font-['KawaiiPixel'], sans-serif;
+  }
+}
